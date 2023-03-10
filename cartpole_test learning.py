@@ -1,6 +1,18 @@
 ﻿import gym
 import numpy as np
 
+def selectAction(observation):
+    
+    pole_speed = observation[3]     # ポールの速度
+    
+    if pole_speed >= 0:
+        action = 1  # 速度が右なら、右方向に力
+    else:
+        action = 0  # 速度が左なら、左方向が力
+    
+    return action
+    
+
 env = gym.make('CartPole-v1')   # 環境の初期化
 print("Action Space: {}".format(env.action_space))  # 行動空間
 print("Env Space {}".format(env.observation_space)) # 状態空間
@@ -25,7 +37,8 @@ for i in range(200):
     # step関数で行動を選択する
     # env.step(action)
     
-    action = env.action_space.sample()      # ランダムに行動選択
+    # action = env.action_space.sample()      # ランダムに行動選択
+    action = selectAction(observation)
     observation, reward, done, info = env.step(action)
 
     print("Step {}".format(i+1))
