@@ -19,12 +19,17 @@ pole_speed = observation[3]         # ポールの速度
 
 action = 0  # 左に向かって力を加える
 
-for i in range(10):
-    env.step(action)
+for i in range(200):
+    # step関数で行動を選択する
+    # env.step(action)
     
+    action = env.action_space.sample()      # ランダムに行動選択
     observation, reward, done, info = env.step(action)
 
+    print("Step {}".format(i+1))
     print("状態: {}".format(observation))
     print("終了判定: {}".format(done))
     
-env.render()    # 環境の描画
+    env.render()    # 環境の描画
+
+
