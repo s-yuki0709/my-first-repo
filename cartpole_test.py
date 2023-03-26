@@ -1,11 +1,36 @@
 ﻿import gym
 import numpy as np
 
+'''
+CartPole初期実装
+200Step実行するだけのスクリプト
+'''
+
+'''
+状態
+・カートの位置（-2.4 ~ 2.4）
+・カートの速度
+・ポールの角度（-12度 ~ 12度）
+・ポールの速度
+'''
+
+'''
+行動
+・左に向かって力を加える（0）
+・右に向かって力を加える (1)
+'''
+
+'''
+失敗条件
+1.ポールが12度以上傾く
+2.カートの位置が画面の端に到達する（中央から2.4以上離れる）
+'''
+
 env = gym.make('CartPole-v1')   # 環境の初期化
 print("Action Space: {}".format(env.action_space))  # 行動空間
 print("Env Space {}".format(env.observation_space)) # 状態空間
 
-observation = env.reset()   # 環境の初期化
+observation = env.reset()       # 環境のリセット
 
 cart_position = observation[0]      # カートの位置
 cart_speed = observation[1]         # カートの速度
