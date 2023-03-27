@@ -26,6 +26,7 @@
 
 
 ## cartpole_test.py
+[リンク](./cartpole_test.py)
 ランダムに行動して、200Step実行するのみです。  
 
 
